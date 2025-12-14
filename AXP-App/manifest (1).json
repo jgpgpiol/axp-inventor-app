@@ -1,0 +1,22 @@
+{
+  "name": "AXP Inventor Compilation",
+  "short_name": "AXP Inventors",
+  "description": "Interactive inventor gallery and quiz by Angela Xaverie Piol",
+  "start_url": "AXP_Inventor_Compilation_PRESERVED_v20.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#1e3c72",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
