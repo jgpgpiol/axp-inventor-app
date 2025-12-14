@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AXP Inventor Compilation – FINAL v15 (No Repeated Questions)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0;font-family:Segoe UI,Arial;background:#020617;color:#fff}
+header{background:radial-gradient(circle at top left,#3b82f6,#1e3c72,#020617);box-shadow:0 0 30px rgba(59,130,246,.6);padding:26px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo .axp-main{font-size:3rem;font-weight:900;letter-spacing:4px;text-shadow:0 0 14px gold}
+.logo .axp-name{font-size:.95rem;letter-spacing:3px}
+.logo .axp-desc{font-size:.85rem;opacity:.8}
+.menu a{margin-left:26px;color:#e5e7eb;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:14px;transition:.35s;cursor:pointer}
+.menu a:hover{color:#fff;text-shadow:0 0 8px #60a5fa,0 0 18px #3b82f6,0 0 32px #2563eb;background:rgba(255,255,255,.12)}
+.container{max-width:1400px;margin:auto;padding:60px 40px}
+.hidden{display:none}
+
+/* INVENTORS */
+.filters{margin-bottom:20px}
+.filters button{background:#1e3a8a;color:#fff;border:none;border-radius:999px;padding:8px 16px;margin:4px;font-weight:600;cursor:pointer}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.card{background:#fff;color:#000;padding:26px;border-radius:18px;box-shadow:0 0 0 2px rgba(59,130,246,.6),0 0 20px rgba(59,130,246,.5);cursor:pointer;transition:.35s}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 0 3px rgba(96,165,250,.9),0 0 40px rgba(96,165,250,.9)}
+.card h3{transition:.35s}
+.card:hover h3{color:#1e3a8a;text-shadow:0 0 6px rgba(59,130,246,.9),0 0 14px rgba(59,130,246,.8)}
+.badge{display:inline-block;background:#e0e7ff;color:#1e3a8a;padding:5px 12px;border-radius:999px;font-size:.75rem;margin-bottom:12px}
+
+/* QUIZ */
+.quiz-container{max-width:900px;margin:40px auto;background:#fff;color:#000;padding:42px;border-radius:24px}
+#progressBar{height:14px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:20px 0}
+#progressFill{height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#4ade80)}
+button{padding:12px 22px;border:none;border-radius:14px;background:#2563eb;color:#fff;font-weight:600;cursor:pointer;margin-right:10px}
+button.secondary{background:#64748b}
+@keyframes glow{0%{text-shadow:0 0 5px #22c55e}50%{text-shadow:0 0 20px #4ade80}100%{text-shadow:0 0 5px #22c55e}}
+.pass{color:#16a34a;font-weight:900;font-size:1.3rem;animation:glow 1.5s infinite}
+.fail{color:#dc2626;font-weight:800}
+#resultGraph{display:flex;gap:30px;align-items:flex-end;height:120px;margin-top:20px}
+.bar{width:100px;text-align:center}
+.bar-inner{width:100%;border-radius:8px}
+.correct{background:#22c55e}
+.wrong{background:#ef4444}
+.review{margin-top:30px}
+.correctAns{color:#16a34a}
+.wrongAns{color:#dc2626}
+footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
+
+/* AXP LOGO GLOW */
+.logo:hover .axp-main{
+  text-shadow:
+    0 0 10px gold,
+    0 0 22px #facc15,
+    0 0 40px #fde047;
+}
+
+/* CATEGORY BUTTON GLOW */
+.filters button{
+  transition:.35s;
+}
+.filters button:hover{
+  text-shadow:
+    0 0 6px #93c5fd,
+    0 0 14px #3b82f6;
+  box-shadow:
+    0 0 10px rgba(59,130,246,.9),
+    0 0 22px rgba(37,99,235,.9);
+}
+
+
+/* TAB MENU COLOR + GLOW ON HOVER */
+.menu a:hover{
+  color: #22c55e; /* green */
+  background: linear-gradient(90deg, #22c55e, #facc15); /* green to yellow */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 8px #22c55e,
+    0 0 16px #facc15,
+    0 0 28px rgba(250,204,21,0.9);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo"><div class="axp-main">AXP</div><div class="axp-name">Angela Xaverie Piol</div><div class="axp-desc">Inventor Compilation</div></div>
+<div class="menu"><a onmouseover="showInventors()">Inventors</a><a onmouseover="showQuiz()">Quiz</a></div>
+</header>
+
+<div class="container" id="inventorSection">
+<h2>Influential Inventors</h2>
+<div class="filters">
+<button onclick="filterCat('All')">All</button>
+<button onclick="filterCat('Science')">Science</button>
+<button onclick="filterCat('Technology')">Technology</button>
+<button onclick="filterCat('Computing')">Computing</button>
+<button onclick="filterCat('Engineering')">Engineering</button>
+<button onclick="filterCat('Medicine')">Medicine</button>
+</div>
+<div class="card-grid">
+<div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Nikola Tesla</h3><p>Alternating Current</p></div>
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Marie Curie</h3><p>Radioactivity</p></div>
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Albert Einstein</h3><p>Relativity</p></div>
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>Ada Lovelace</h3><p>Algorithms</p></div>
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>Alan Turing</h3><p>Computer Science</p></div>
+<div class="card" data-cat="Engineering"><span class="badge">Engineering</span><h3>Thomas Edison</h3><p>Electric Light</p></div>
+<div class="card" data-cat="Engineering"><span class="badge">Engineering</span><h3>Wright Brothers</h3><p>Airplane</p></div>
+<div class="card" data-cat="Medicine"><span class="badge">Medicine</span><h3>Edward Jenner</h3><p>Vaccination</p></div>
+
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Michael Faraday</h3><p>Electromagnetism</p></div>
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Max Planck</h3><p>Quantum Theory</p></div>
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Carl Linnaeus</h3><p>Biological Classification</p></div>
+
+<div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Sergey Brin</h3><p>Search Algorithms</p></div>
+<div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Larry Page</h3><p>Search Engine Systems</p></div>
+
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>John von Neumann</h3><p>Computer Architecture</p></div>
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>Claude Shannon</h3><p>Information Theory</p></div>
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>Barbara Liskov</h3><p>Programming Abstraction</p></div>
+
+<div class="card" data-cat="Engineering"><span class="badge">Engineering</span><h3>Henry Ford</h3><p>Mass Production</p></div>
+<div class="card" data-cat="Engineering"><span class="badge">Engineering</span><h3>George Stephenson</h3><p>Railway Engineering</p></div>
+
+<div class="card" data-cat="Medicine"><span class="badge">Medicine</span><h3>Joseph Lister</h3><p>Antiseptic Surgery</p></div>
+<div class="card" data-cat="Medicine"><span class="badge">Medicine</span><h3>Andreas Vesalius</h3><p>Human Anatomy</p></div>
+<div class="card" data-cat="Medicine"><span class="badge">Medicine</span><h3>Virginia Apgar</h3><p>Newborn Assessment</p></div>
+
+</div>
+</div>
+
+<div class="container hidden" id="quizSection">
+<div class="quiz-container">
+<h2>🎮 Inventor Quiz</h2>
+<p>25 questions • Passing score: 55%</p>
+<select id="levelSelect" onchange="startQuiz()">
+<option value="beginner">Beginner (6 choices)</option>
+<option value="intermediate">Intermediate (4 choices)</option>
+<option value="expert">Expert (2 choices)</option>
+</select>
+<div id="progressBar"><div id="progressFill"></div></div>
+<p id="question"></p>
+<div id="choices"></div>
+<button onclick="submitAnswer()">Submit</button>
+<button class="secondary" onclick="showInventors()">Back to Inventors</button>
+<div id="scoreText"></div>
+<div id="resultGraph"></div>
+<div id="reviewList" class="review"></div>
+</div>
+</div>
+
+<footer>© 2025 AXP Inventor Compilation</footer>
+
+<script>
+function showInventors(){quizSection.classList.add('hidden');inventorSection.classList.remove('hidden')}
+function showQuiz(){inventorSection.classList.add('hidden');quizSection.classList.remove('hidden');startQuiz()}
+function filterCat(cat){
+document.querySelectorAll('.card').forEach(c=>{
+c.style.display=(cat==='All'||c.dataset.cat===cat)?'block':'none'
+})
+}
+
+const PASS_MARK=55
+let qi=0,score=0,correct=0,wrong=0,quiz=[],review=[]
+
+/* 25 UNIQUE QUESTIONS */
+const questionBank=[
+['Who developed AC electricity?',['Tesla','Edison','Bell','Watt','Einstein','Newton'],0],
+['Who discovered radioactivity?',['Curie','Newton','Einstein','Galileo','Pasteur','Tesla'],0],
+['Who proposed relativity?',['Einstein','Newton','Galileo','Curie','Tesla','Watt'],0],
+['Who invented the telephone?',['Bell','Edison','Tesla','Jobs','Gates','Watt'],0],
+['Who wrote the first algorithm?',['Ada Lovelace','Hopper','Turing','Jobs','Curie','Newton'],0],
+['Who invented the airplane?',['Wright Brothers','Benz','Ford','Tesla','Bell','Jobs'],0],
+['Who founded computer science?',['Turing','Jobs','Gates','Torvalds','Hopper','Berners-Lee'],0],
+['Who created COBOL?',['Hopper','Lovelace','Turing','Stroustrup','Torvalds','Jobs'],0],
+['Who invented the printing press?',['Gutenberg','Edison','Tesla','Bell','Jobs','Newton'],0],
+['Who developed vaccination?',['Jenner','Pasteur','Hippocrates','Curie','Newton','Tesla'],0],
+['Who improved the steam engine?',['Watt','Ford','Benz','Tesla','Edison','Bell'],0],
+['Who built the first automobile?',['Benz','Ford','Watt','Tesla','Bell','Jobs'],0],
+['Who pioneered astronomy?',['Galileo','Copernicus','Newton','Einstein','Curie','Tesla'],0],
+['Who advanced germ theory?',['Pasteur','Jenner','Hippocrates','Curie','Newton','Tesla'],0],
+['Who invented C++?',['Stroustrup','Torvalds','Gates','Jobs','Turing','Hopper'],0],
+['Who pioneered wireless technology?',['Hedy Lamarr','Bell','Tesla','Jobs','Gates','Newton'],0],
+['Who led the Green Revolution?',['Borlaug','Curie','Newton','Einstein','Tesla','Pasteur'],0],
+['Who formulated the laws of motion?',['Newton','Einstein','Galileo','Curie','Tesla','Watt'],0],
+['Who created the World Wide Web?',['Berners-Lee','Gates','Jobs','Torvalds','Tesla','Hopper'],0],
+['Who founded modern nursing?',['Nightingale','Jenner','Curie','Pasteur','Hippocrates','Newton'],0],
+['Who invented mass publishing?',['Gutenberg','Edison','Bell','Tesla','Jobs','Newton'],0],
+['Who founded medical ethics?',['Hippocrates','Jenner','Pasteur','Curie','Newton','Tesla'],0],
+['Who developed consumer tech devices?',['Jobs','Gates','Tesla','Bell','Edison','Newton'],0],
+['Who improved electricity distribution?',['Tesla','Edison','Bell','Watt','Newton','Curie'],0],
+['Who invented Linux?',['Torvalds','Gates','Jobs','Stallman','Berners-Lee','Hopper'],0]
+]
+
+function startQuiz(){
+qi=0;score=0;correct=0;wrong=0;review=[]
+const level=levelSelect.value
+const choiceCount=level==='beginner'?6:level==='intermediate'?4:2
+quiz=questionBank.map(q=>[q[0],q[1].slice(0,choiceCount),q[2]])
+loadQ()
+}
+function loadQ(){
+question.innerText=`Q${qi+1}/25. ${quiz[qi][0]}`
+choices.innerHTML=''
+quiz[qi][1].forEach((c,i)=>choices.innerHTML+=`<label><input type="radio" name="ans" value="${i}"> ${c}</label><br>`)
+progressFill.style.width=`${(qi/25)*100}%`
+}
+function submitAnswer(){
+const sel=document.querySelector('input[name=ans]:checked')
+if(!sel){alert('Select an answer');return}
+const ok=+sel.value===quiz[qi][2]
+if(ok){score++;correct++}else{wrong++}
+review.push({q:quiz[qi][0],chosen:quiz[qi][1][sel.value],correct:quiz[qi][1][quiz[qi][2]],ok})
+qi++
+qi<25?loadQ():endQuiz()
+}
+function endQuiz(){
+progressFill.style.width='100%'
+const pct=Math.round((score/25)*100)
+scoreText.innerHTML=pct>=PASS_MARK?`<div class='pass'>🎉 CONGRATULATIONS! YOU PASSED (${pct}%)</div>`:`<div class='fail'>❌ You did not pass (${pct}%)</div>`
+resultGraph.innerHTML=`<div class="bar"><div class="bar-inner correct" style="height:${correct*4}px"></div>Correct (${correct})</div><div class="bar"><div class="bar-inner wrong" style="height:${wrong*4}px"></div>Wrong (${wrong})</div>`
+reviewList.innerHTML='<h3>Answer Review</h3>'+review.map(r=>`<p><strong>${r.q}</strong><br>Your answer: <span class="${r.ok?'correctAns':'wrongAns'}">${r.chosen}</span><br>Correct answer: <span class="correctAns">${r.correct}</span></p>`).join('')
+}
+</script>
+</body>
+</html>
