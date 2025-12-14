@@ -2,28 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AXP Inventor Compilation – FINAL</title>
+<title>AXP Inventor Compilation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{margin:0;font-family:Segoe UI,Arial;background:#020617;color:#fff}
-header{background:radial-gradient(circle at top left,#3b82f6,#1e3c72,#020617);
+header{
+background:radial-gradient(circle at top left,#3b82f6,#1e3c72,#020617);
 box-shadow:0 0 30px rgba(59,130,246,.6);
-padding:26px 48px;display:flex;justify-content:space-between;align-items:center}
-.logo .axp-main{font-size:3rem;font-weight:900;letter-spacing:4px;
-text-shadow:0 0 14px gold}
+padding:26px 48px;
+display:flex;justify-content:space-between;align-items:center
+}
+.logo .axp-main{font-size:3rem;font-weight:900;letter-spacing:4px;text-shadow:0 0 14px gold}
 .logo .axp-name{font-size:.95rem;letter-spacing:3px}
 .logo .axp-desc{font-size:.85rem;opacity:.8}
 
-.menu a{margin-left:26px;color:#e5e7eb;text-decoration:none;
+.menu a{
+margin-left:26px;color:#e5e7eb;text-decoration:none;
 font-weight:700;padding:10px 18px;border-radius:14px;
-cursor:pointer;transition:.35s}
+cursor:pointer;transition:.35s
+}
 .menu a:hover{
-color:#22c55e;
 background:linear-gradient(90deg,#22c55e,#facc15);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-text-shadow:0 0 8px #22c55e,0 0 16px #facc15;
+text-shadow:0 0 10px #22c55e,0 0 20px #facc15
 }
 
 .container{max-width:1400px;margin:auto;padding:60px 40px}
@@ -36,18 +39,17 @@ border-radius:999px;padding:8px 16px;margin:4px;
 font-weight:600;cursor:pointer;transition:.3s
 }
 .filters button:hover{
-box-shadow:0 0 10px #3b82f6,0 0 20px #2563eb
+box-shadow:0 0 12px #3b82f6,0 0 24px #2563eb
 }
+
 .card-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px
 }
 .card{
-background:#fff;color:#000;padding:26px;
-border-radius:18px;
-box-shadow:0 0 0 2px rgba(59,130,246,.6),
-0 0 20px rgba(59,130,246,.5);
+background:#fff;color:#000;padding:26px;border-radius:18px;
+box-shadow:0 0 0 2px rgba(59,130,246,.6),0 0 20px rgba(59,130,246,.5);
 transition:.35s
 }
 .card:hover{
@@ -57,8 +59,7 @@ box-shadow:0 0 0 3px #60a5fa,0 0 40px #60a5fa
 .card h3{margin-top:10px}
 .badge{
 background:#e0e7ff;color:#1e3a8a;
-padding:5px 12px;border-radius:999px;
-font-size:.75rem
+padding:5px 12px;border-radius:999px;font-size:.75rem
 }
 
 /* QUIZ */
@@ -66,7 +67,7 @@ font-size:.75rem
 max-width:900px;margin:auto;background:#fff;color:#000;
 padding:42px;border-radius:24px
 }
-#progressBar{height:14px;background:#e5e7eb;border-radius:999px}
+#progressBar{height:14px;background:#e5e7eb;border-radius:999px;overflow:hidden}
 #progressFill{
 height:100%;width:0%;
 background:linear-gradient(90deg,#22c55e,#4ade80)
@@ -77,6 +78,7 @@ background:#2563eb;color:#fff;font-weight:600;
 cursor:pointer;margin-top:12px
 }
 button.secondary{background:#64748b}
+
 .pass{
 color:#16a34a;font-weight:900;
 animation:glow 1.5s infinite
@@ -84,9 +86,14 @@ animation:glow 1.5s infinite
 .fail{color:#dc2626;font-weight:800}
 @keyframes glow{
 0%{text-shadow:0 0 6px #22c55e}
-50%{text-shadow:0 0 18px #4ade80}
+50%{text-shadow:0 0 20px #4ade80}
 100%{text-shadow:0 0 6px #22c55e}
 }
+
+.review{margin-top:30px}
+.correctAns{color:#16a34a}
+.wrongAns{color:#dc2626}
+
 footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
 </style>
 </head>
@@ -105,8 +112,10 @@ footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
 </div>
 </header>
 
+<!-- INVENTORS -->
 <div class="container" id="inventorSection">
 <h2>Influential Inventors</h2>
+
 <div class="filters">
 <button onclick="filterCat('All')">All</button>
 <button onclick="filterCat('Science')">Science</button>
@@ -117,6 +126,7 @@ footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
 </div>
 
 <div class="card-grid">
+<!-- 30+ INVENTORS -->
 <div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Nikola Tesla</h3><p>Alternating Current</p></div>
 <div class="card" data-cat="Science"><span class="badge">Science</span><h3>Marie Curie</h3><p>Radioactivity</p></div>
 <div class="card" data-cat="Science"><span class="badge">Science</span><h3>Albert Einstein</h3><p>Relativity</p></div>
@@ -125,14 +135,21 @@ footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
 <div class="card" data-cat="Engineering"><span class="badge">Engineering</span><h3>Thomas Edison</h3><p>Electric Light</p></div>
 <div class="card" data-cat="Engineering"><span class="badge">Engineering</span><h3>Wright Brothers</h3><p>Airplane</p></div>
 <div class="card" data-cat="Medicine"><span class="badge">Medicine</span><h3>Edward Jenner</h3><p>Vaccination</p></div>
-<!-- (You can keep adding inventors here safely) -->
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>Linus Torvalds</h3><p>Linux</p></div>
+<div class="card" data-cat="Computing"><span class="badge">Computing</span><h3>Grace Hopper</h3><p>COBOL</p></div>
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Isaac Newton</h3><p>Laws of Motion</p></div>
+<div class="card" data-cat="Science"><span class="badge">Science</span><h3>Galileo Galilei</h3><p>Astronomy</p></div>
+<div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Steve Jobs</h3><p>Consumer Devices</p></div>
+<div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Bill Gates</h3><p>Software Industry</p></div>
+<div class="card" data-cat="Medicine"><span class="badge">Medicine</span><h3>Louis Pasteur</h3><p>Germ Theory</p></div>
 </div>
 </div>
 
+<!-- QUIZ -->
 <div class="container hidden" id="quizSection">
 <div class="quiz-container">
 <h2>🎮 Inventor Quiz</h2>
-<p>25 questions • Passing score: 55%</p>
+<p>25 Questions • Passing Score: 55%</p>
 
 <select id="levelSelect" onchange="startQuiz()">
 <option value="beginner">Beginner (6 choices)</option>
@@ -148,6 +165,7 @@ footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
 <button class="secondary" onclick="showInventors()">Back</button>
 
 <div id="scoreText"></div>
+<div id="reviewList" class="review"></div>
 </div>
 </div>
 
@@ -160,6 +178,7 @@ const question=document.getElementById('question')
 const choices=document.getElementById('choices')
 const progressFill=document.getElementById('progressFill')
 const scoreText=document.getElementById('scoreText')
+const reviewList=document.getElementById('reviewList')
 const levelSelect=document.getElementById('levelSelect')
 
 function showInventors(){
@@ -180,48 +199,79 @@ c.style.display=(cat==='All'||c.dataset.cat===cat)?'block':'none'
 }
 
 const PASS_MARK=55
-let qi=0,score=0,quiz=[]
+let qi=0,score=0,quiz=[],review=[]
 
-const questions=[
+const questionBank=[ /* 25 questions */
 ['Who developed AC electricity?',['Tesla','Edison','Bell','Watt','Newton','Einstein'],0],
 ['Who discovered radioactivity?',['Curie','Einstein','Newton','Tesla','Pasteur','Galileo'],0],
 ['Who invented Linux?',['Torvalds','Gates','Jobs','Stallman','Berners-Lee','Hopper'],0],
 ['Who proposed relativity?',['Einstein','Newton','Curie','Tesla','Galileo','Watt'],0],
-['Who invented the airplane?',['Wright Brothers','Ford','Benz','Tesla','Bell','Jobs'],0]
+['Who invented the airplane?',['Wright Brothers','Ford','Benz','Tesla','Bell','Jobs'],0],
+['Who wrote the first algorithm?',['Ada Lovelace','Hopper','Turing','Jobs','Curie','Newton'],0],
+['Who founded computer science?',['Turing','Jobs','Gates','Torvalds','Hopper','Berners-Lee'],0],
+['Who invented the telephone?',['Bell','Edison','Tesla','Jobs','Gates','Watt'],0],
+['Who created COBOL?',['Hopper','Lovelace','Turing','Stroustrup','Torvalds','Jobs'],0],
+['Who invented the printing press?',['Gutenberg','Edison','Tesla','Bell','Jobs','Newton'],0],
+['Who developed vaccination?',['Jenner','Pasteur','Hippocrates','Curie','Newton','Tesla'],0],
+['Who improved the steam engine?',['Watt','Ford','Benz','Tesla','Edison','Bell'],0],
+['Who built the first automobile?',['Benz','Ford','Watt','Tesla','Bell','Jobs'],0],
+['Who pioneered astronomy?',['Galileo','Copernicus','Newton','Einstein','Curie','Tesla'],0],
+['Who advanced germ theory?',['Pasteur','Jenner','Hippocrates','Curie','Newton','Tesla'],0],
+['Who invented C++?',['Stroustrup','Torvalds','Gates','Jobs','Turing','Hopper'],0],
+['Who pioneered wireless tech?',['Hedy Lamarr','Bell','Tesla','Jobs','Gates','Newton'],0],
+['Who created the World Wide Web?',['Berners-Lee','Gates','Jobs','Torvalds','Tesla','Hopper'],0],
+['Who formulated laws of motion?',['Newton','Einstein','Galileo','Curie','Tesla','Watt'],0],
+['Who founded modern nursing?',['Nightingale','Jenner','Curie','Pasteur','Hippocrates','Newton'],0],
+['Who invented mass publishing?',['Gutenberg','Edison','Bell','Tesla','Jobs','Newton'],0],
+['Who founded medical ethics?',['Hippocrates','Jenner','Pasteur','Curie','Newton','Tesla'],0],
+['Who led the Green Revolution?',['Borlaug','Curie','Newton','Einstein','Tesla','Pasteur'],0],
+['Who improved electricity distribution?',['Tesla','Edison','Bell','Watt','Newton','Curie'],0],
+['Who developed consumer tech devices?',['Jobs','Gates','Tesla','Bell','Edison','Newton'],0]
 ]
 
 function startQuiz(){
-qi=0;score=0
+qi=0;score=0;review=[]
 const level=levelSelect.value
 const count=level==='beginner'?6:level==='intermediate'?4:2
-quiz=questions.map(q=>[q[0],q[1].slice(0,count),q[2]])
+quiz=questionBank.map(q=>[q[0],q[1].slice(0,count),q[2]])
 loadQ()
 }
 
 function loadQ(){
-question.innerText=`Q${qi+1}. ${quiz[qi][0]}`
+question.innerText=`Q${qi+1}/25. ${quiz[qi][0]}`
 choices.innerHTML=''
 quiz[qi][1].forEach((c,i)=>{
 choices.innerHTML+=`<label><input type="radio" name="ans" value="${i}"> ${c}</label><br>`
 })
-progressFill.style.width=`${(qi/quiz.length)*100}%`
+progressFill.style.width=`${(qi/25)*100}%`
 }
 
 function submitAnswer(){
 const sel=document.querySelector('input[name=ans]:checked')
 if(!sel){alert('Select an answer');return}
-if(+sel.value===quiz[qi][2])score++
+const ok=+sel.value===quiz[qi][2]
+if(ok)score++
+review.push({
+q:quiz[qi][0],
+chosen:quiz[qi][1][sel.value],
+correct:quiz[qi][1][quiz[qi][2]],
+ok
+})
 qi++
-qi<quiz.length?loadQ():endQuiz()
+qi<25?loadQ():endQuiz()
 }
 
 function endQuiz(){
 progressFill.style.width='100%'
-const pct=Math.round((score/quiz.length)*100)
-scoreText.innerHTML=
-pct>=PASS_MARK
-?`<div class="pass">🎉 CONGRATULATIONS! (${pct}%)</div>`
+const pct=Math.round((score/25)*100)
+scoreText.innerHTML=pct>=PASS_MARK
+?`<div class="pass">🎉 CONGRATULATIONS! You passed (${pct}%)</div>`
 :`<div class="fail">❌ You did not pass (${pct}%)</div>`
+reviewList.innerHTML='<h3>Answer Review</h3>'+review.map(r=>
+`<p><strong>${r.q}</strong><br>
+Your answer: <span class="${r.ok?'correctAns':'wrongAns'}">${r.chosen}</span><br>
+Correct answer: <span class="correctAns">${r.correct}</span></p>`
+).join('')
 }
 
 showInventors()
@@ -229,3 +279,4 @@ showInventors()
 
 </body>
 </html>
+
