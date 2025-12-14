@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AXP Inventor Compilation – PWA Ready</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1e3c72">
+
+<style>
+body{margin:0;font-family:Segoe UI,Arial;background:#020617;color:#fff}
+header{background:radial-gradient(circle at top left,#3b82f6,#1e3c72,#020617);box-shadow:0 0 30px rgba(59,130,246,.6);padding:26px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo .axp-main{font-size:3rem;font-weight:900;letter-spacing:4px;text-shadow:0 0 14px gold}
+.logo:hover .axp-main{text-shadow:0 0 10px gold,0 0 22px #facc15,0 0 40px #fde047}
+.logo .axp-name{font-size:.95rem;letter-spacing:3px}
+.logo .axp-desc{font-size:.85rem;opacity:.8}
+.menu a{margin-left:26px;color:#e5e7eb;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:14px;transition:.35s;cursor:pointer}
+.menu a:hover{
+  background:linear-gradient(90deg,#22c55e,#facc15);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 8px #22c55e,0 0 18px #facc15
+}
+.container{max-width:1400px;margin:auto;padding:60px 40px}
+.hidden{display:none}
+.filters button{background:#1e3a8a;color:#fff;border:none;border-radius:999px;padding:8px 18px;margin:4px;font-weight:600;cursor:pointer;transition:.3s}
+.filters button:hover{background:#2563eb;box-shadow:0 0 12px #3b82f6}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.card{background:#fff;color:#000;padding:26px;border-radius:18px;box-shadow:0 0 0 2px rgba(59,130,246,.6),0 0 20px rgba(59,130,246,.5)}
+.badge{background:#e0e7ff;color:#1e3a8a;padding:5px 12px;border-radius:999px;font-size:.75rem}
+.quiz-container{max-width:900px;margin:40px auto;background:#fff;color:#000;padding:42px;border-radius:24px}
+footer{text-align:center;padding:22px;background:#1e3c72;margin-top:60px}
+</style>
+</head>
+
+<body>
+<header>
+<div class="logo"><div class="axp-main">AXP</div><div class="axp-name">Angela Xaverie Piol</div><div class="axp-desc">Inventor Compilation</div></div>
+<div class="menu"><a onmouseover="showInventors()">Inventors</a><a onmouseover="showQuiz()">Quiz</a></div>
+</header>
+
+<div class="container" id="inventorSection">
+<h2>Influential Inventors</h2>
+<div class="filters"><button onclick="filterCat('All')">All</button></div>
+<div class="card-grid">
+<div class="card" data-cat="Technology"><span class="badge">Technology</span><h3>Nikola Tesla</h3><p>Alternating Current</p></div>
+</div>
+</div>
+
+<div class="container hidden" id="quizSection">
+<div class="quiz-container">
+<h2>🎮 Inventor Quiz</h2>
+<button onclick="showInventors()">Back</button>
+</div>
+</div>
+
+<footer>© 2025 AXP Inventor Compilation</footer>
+
+<script>
+function showInventors(){quizSection.classList.add('hidden');inventorSection.classList.remove('hidden')}
+function showQuiz(){inventorSection.classList.add('hidden');quizSection.classList.remove('hidden')}
+function filterCat(cat){}
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>
